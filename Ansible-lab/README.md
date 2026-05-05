@@ -52,13 +52,17 @@ sudo apt install ansible -y
 ansible --version
 ```
 ### 2. Clone the repository and enter the project directory
+
+```bash
 git clone <this-repo-url>
 cd DevOps_Projects/Ansible-lab
-
+```
 ### 3. Update the inventory file with your managed node’s Tailscale IP
+```bash
 Open `inventory.ini` and replace `
 [webservers]
 100.72.14.56 ansible_user=mayank` with your actual Tailscale IP address.
+```
 
 ##  Usage and Validation
 
