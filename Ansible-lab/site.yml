@@ -1,0 +1,59 @@
+---
+- name: Configure web server on Rocky 
+  hosts: rocky
+  become: true 
+  tasks:
+    - name: Installing nginx 
+      dnf: 
+        name: nginx  
+        state: present
+       
+       
+    - name: Create webroot directory 
+      file: 
+        path: /webroot/html
+        state: directory
+        mode: '0755'
+
+    - name: Deploy SELinux demo page
+      copy: 
+        src: ./selinux-demo.html
+        dest: /webroot/html/index.html
+        owner: nginx 
+        group: nginx 
+        mode: '0644'
+
+    - name: Ensure proper SELinux file context 
+      sefcontext: 
+        target: '/webroot/html(/.*)?'
+        setype: httpd_sys_content_t
+        state: present
+      notify: run restorecon
+
+    - name: Installing firewalld 
+      dnf: 
+        name: firewalld 
+        state: present
+
+    - name: Ensure firewalld if running and enabled 
+      systemd: 
+        name: firewalld 
+        state: started
+        enabled: true
+
+    - name: Open HTTP port in firewalld 
+      firewalld:
+        service: http
+        permanent: true 
+        state: enabled 
+        immediate: true 
+
+    - name: Ensure nginx is running and enabled 
+      systemd:
+        name: nginx 
+        state: started 
+        enabled: true 
+
+  handlers:
+    - name: run restorecon
+      command: restorecon -Rv /webroot/html
