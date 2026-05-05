@@ -54,7 +54,7 @@ ansible --version
 ### 2. Clone the repository and enter the project directory
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/Mayankk0608/DevOps-Worklab.git
 cd DevOps_Projects/Ansible-lab
 ```
 ### 3. Update the inventory file with your managed node’s Tailscale IP
