@@ -11,7 +11,7 @@
 
 **Next:** SSH and firewalld hardening.
 
---
+----
 
 ### Day 2 – 2026-04-20
 
@@ -25,7 +25,7 @@
 
 **Next:** Users, groups, and sudoers.
 
---
+----
 
 ### Day 3 – 2026-04-21
 
