@@ -5,7 +5,9 @@
 
 **What I did:** Installed Rocky Linux 9 as a virtual machine. Learned SELinux basics: contexts, DAC vs MAC, and commands `ls -lZ`, `ps axZ`. Deployed a custom Nginx page from `/webroot/html/`. Hit a 403 Forbidden error because the file lacked the `httpd_sys_content_t` type. Used `semanage fcontext` and `restorecon` to fix it permanently.  
 
+```bash
 **Key commands:** `ls -lZ /webroot/html/index.html`, `semanage fcontext -a -t httpd_sys_content_t "/webroot/html(/.*)?"`, `restorecon -Rv /webroot/html`, `ausearch -m avc -ts recent`  
+```
 
 **What I learned:** SELinux denials are logged in `/var/log/audit/audit.log`, not `journalctl`. Always restore contexts instead of disabling SELinux.  
 
