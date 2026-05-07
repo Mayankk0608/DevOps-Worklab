@@ -1,5 +1,5 @@
 
-## Day 1 – 2026-04-19
+# Day 1 – 2026-04-19
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -12,7 +12,7 @@
 **Next:** SSH and firewalld hardening.
 --
 
-## Day 2 – 2026-04-20
+# Day 2 – 2026-04-20
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -25,7 +25,7 @@
 **Next:** Users, groups, and sudoers.
 --
 
-## Day 3 – 2026-04-21
+# Day 3 – 2026-04-21
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -38,7 +38,7 @@
 **Next:** System monitoring and logs.
 --
 
-## Day 4 – 2026-04-22
+# Day 4 – 2026-04-22
 
 **Project:** homelab (Rocky Linux 9) 
 
@@ -51,7 +51,7 @@
 **Next:** Log rotation and backups.
 --
 
-## Day 5 – 2026-04-23
+### Day 5 – 2026-04-23
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -64,7 +64,7 @@
 **Next:** Cron vs systemd timers, bulk user creation.
 --
 
-## Day 6 – 2026-04-24
+### Day 6 – 2026-04-24
 
 **Project:** homelab & Ansible prep  
 
@@ -77,7 +77,7 @@
 **Next:** Git & GitHub for homelab scripts.
 --
 
-## Day 7 – 2026-04-26
+### Day 7 – 2026-04-26
 
 **Project:** homelab & Git  
 
@@ -90,7 +90,7 @@
 **Next:** LVM – disk management.
 --
 
-## Day 8 – 2026-04-28
+### Day 8 – 2026-04-28
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -103,7 +103,7 @@
 **Next:** cgroups – container resource limits.
 --
 
-## Day 9 – 2026-04-29
+### Day 9 – 2026-04-29
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -116,7 +116,7 @@
 **Next:** `strace` – tracing system calls.
 --
 
-## Day 10 – 2026-04-30
+### Day 10 – 2026-04-30
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -129,7 +129,7 @@
 **Next:** `lsof` and `fuser` for port/file detection.
 --
 
-## Day 11 – 2026-05-01
+### Day 11 – 2026-05-01
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -142,7 +142,7 @@
 **Next:** iptables/nftables and firewall internals.
 --
 
-## Day 12 – 2026-05-02
+### Day 12 – 2026-05-02
 
 **Project:** homelab (Rocky Linux 9)  
 
@@ -155,7 +155,7 @@
 **Next:** Remote access with Tailscale mesh VPN.
 --
 
-## Day 13 – 2026-05-02 (continued)
+### Day 13 – 2026-05-02 (continued)
 
 **Project:** homelab networking  
 
@@ -168,7 +168,7 @@
 **Next:** Tailscale global homelab.
 --
 
-## Day 14 – 2026-05-03
+### Day 14 – 2026-05-03
 
 **Project:** Tailscale & cross‑machine SSH  
 
@@ -181,7 +181,7 @@
 **Next:** Network namespaces (container networking).
 --
 
-## Day 15 – 2026-05-04
+### Day 15 – 2026-05-04
 
 **Project:** homelab (Linux kernel)  
 
@@ -194,7 +194,7 @@
 **Next:** Playwright & test automation.
 --
 
-## Day 16 – 2026-05-05
+### Day 16 – 2026-05-05
 
 **Project:** PlayWrightCode 
 
@@ -207,7 +207,7 @@
 **Next:** Ansible – Infrastructure as Code.
 --
 
-## Day 17 – 2026-05-06
+### Day 17 – 2026-05-06
 
 **Project:** Ansible-lab  
 
@@ -220,7 +220,7 @@
 **Next:** Variables and templates.
 --
 
-## Day 18 – 2026-05-07
+### Day 18 – 2026-05-07
 
 **Project:** Ansible-lab & PlayWrightCode  
 
