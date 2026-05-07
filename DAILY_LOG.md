@@ -10,7 +10,7 @@
 **What I learned:** SELinux denials are logged in `/var/log/audit/audit.log`, not `journalctl`. Always restore contexts instead of disabling SELinux.  
 
 **Next:** SSH and firewalld hardening.
-
+--
 ### Day 2 – 2026-04-20
 
 **Project:** homelab (Rocky Linux 9)  
