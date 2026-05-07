@@ -91,5 +91,3 @@ If you’re a recruiter, an engineer, or just curious – feel free to open an i
 - **Email:** `m17262477@gmail.com`
 
 ---
-
-> *Consistency over intensity. One commit at a time.*
