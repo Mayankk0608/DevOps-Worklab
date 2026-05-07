@@ -10,6 +10,7 @@
 **What I learned:** SELinux denials are logged in `/var/log/audit/audit.log`, not `journalctl`. Always restore contexts instead of disabling SELinux.  
 
 **Next:** SSH and firewalld hardening.
+
 --
 
 ### Day 2 – 2026-04-20
@@ -23,6 +24,7 @@
 **What I learned:** SSH is bidirectional if the firewall allows it; Windows Firewall blocked incoming SSH until I enabled OpenSSH Server. Firewalld rich rules create zero‑trust access.  
 
 **Next:** Users, groups, and sudoers.
+
 --
 
 ### Day 3 – 2026-04-21
@@ -36,6 +38,7 @@
 **What I learned:** One `useradd` updates multiple files. The shadow file stores hashed passwords; only root can read it. 
 
 **Next:** System monitoring and logs.
+
 --
 
 ### Day 4 – 2026-04-22
@@ -49,6 +52,7 @@
 **What I learned:** An empty log isn’t broken; the service simply hadn’t received requests. Monitoring requires both real‑time tools and automated alerts. 
 
 **Next:** Log rotation and backups.
+
 --
 
 ### Day 5 – 2026-04-23
@@ -62,6 +66,7 @@
 **What I learned:** Backups must leave the server. `logrotate` prevents disk bloat. The backup script must be executable and use absolute paths.  
 
 **Next:** Cron vs systemd timers, bulk user creation.
+
 --
 
 ### Day 6 – 2026-04-24
