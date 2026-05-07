@@ -1,0 +1,2 @@
+<h1>This page is served from {{ ansible_facts['hostname'] }}</h1>
+<p>Tailscale IP: {{ ansible_facts['tailscale']['ip'] | default('unknown') }}</p>

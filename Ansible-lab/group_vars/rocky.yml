@@ -1,0 +1,9 @@
+---
+
+ansible_user: mayank
+web_user: nginx 
+web_group: nginx 
+webroot: /webroot/html
+web_content_file: selinux-demo.html
+firewall_service: http
+selinux_type: httpd_sys_content_t  

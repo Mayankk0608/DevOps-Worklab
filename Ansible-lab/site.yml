@@ -15,18 +15,25 @@
         state: directory
         mode: '0755'
 
-    - name: Deploy SELinux demo page
-      copy: 
-        src: ./selinux-demo.html
-        dest: /webroot/html/index.html
-        owner: nginx 
-        group: nginx 
+    - name: Ensure nginx serves from custom webroot
+      lineinfile: 
+        path: /etc/nginx/nginx.conf
+        regexp: '^\s*root\s+/usr/share/nginx/html;'
+        line: '        root /webroot/html;'
+      notify: reload nginx
+
+    - name: Deploy custom index demo page
+      template:
+        src: templates/index.html.j2
+        dest: "{{ webroot }}/index.html"
+        owner: "{{ web_user }}"
+        group: "{{ web_group }}"
         mode: '0644'
 
     - name: Ensure proper SELinux file context 
       sefcontext: 
-        target: '/webroot/html(/.*)?'
-        setype: httpd_sys_content_t
+        target: "{{ webroot }}(/.*)?"
+        setype: "{{  selinux_type }}"
         state: present
       notify: run restorecon
 
@@ -43,10 +50,11 @@
 
     - name: Open HTTP port in firewalld 
       firewalld:
-        service: http
+        service: "{{ firewall_service }}"
         permanent: true 
         state: enabled 
-        immediate: true 
+        immediate: true
+      when: ansible_facts['os_family'] == "RedHat"
 
     - name: Ensure nginx is running and enabled 
       systemd:
@@ -57,3 +65,10 @@
   handlers:
     - name: run restorecon
       command: restorecon -Rv /webroot/html
+
+  handlers: 
+    - name: reload nginx
+      systemd: 
+        name: nginx
+        state: reloaded
+
