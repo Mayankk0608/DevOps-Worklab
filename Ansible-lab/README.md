@@ -134,3 +134,48 @@ def test_selinux(page):
 1. Use variables and templates to make the playbook reusable across multiple servers.
 2. Add roles for a Django app, database, and monitoring.
 3.  Integrate with Terraform to provision cloud instances and then configure them with Ansible.
+
+
+## Day 18 – Variables, Templates, and Reusability
+
+**Goal:** Turn the static playbook into a portable configuration that can target different machines and deploy different content without rewriting tasks.
+
+### What changed
+
+---
+
+| File | Change | Why |
+|------|--------|-----|
+| `group_vars/rocky.yml` | New file | Holds all Rocky‑specific values (user, paths, SELinux type) |
+| `site.yml` | Hardcoded values replaced with `{{ variables }}` | Makes the playbook reusable across different hosts |
+| `templates/index.html.j2` | New file | Jinja2 template that injects the server’s hostname and Tailscale IP |
+| `tasks` (in `site.yml`) | `lineinfile` task added | Ensures Nginx serves from the custom webroot, not the default `/usr/share/nginx/html` |
+| `handlers` (in `site.yml`) | `reload nginx` handler added | Gracefully reloads Nginx when its configuration changes |
+
+---
+
+### How it works
+
+1. **Variables** – the playbook no longer contains hardcoded `webroot: /webroot/html` or `selinux_type: httpd_sys_content_t`. Those live in `group_vars/rocky.yml` and are read automatically.
+
+2. **Templates** – instead of copying a static HTML file, the playbook now processes `templates/index.html.j2` with Jinja2:
+   ```html
+   <h1>This page is served from {{ ansible_facts['hostname'] }}</h1>
+   <p>Tailscale IP: {{ ansible_facts['tailscale']['ip'] | default('unknown') }}</p>
+
+The resulting page shows live server metadata – perfect for proving which host responded.
+
+3. **Nginx root fix** – the lineinfile task searches for the default root /usr/share/nginx/html; in /etc/nginx/nginx.conf and replaces it with our custom path. This survives full server rebuilds.
+
+4. **Handlers** – when the Nginx config changes, the reload nginx handler runs automatically, applying the new configuration without a full restart.
+
+Validation (Playwright)
+A new test (test_selinux2.py) asserts that the page contains the expected hostname:
+
+```python
+def test_selinux_template(page):
+    page.goto("http://100.72.14.56")
+    expect(page.locator("h1")).to_contain_text("This page is served from")
+    ```
+
+    Result: 1 passed – the page now correctly shows This page is served from rockylab.
