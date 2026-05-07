@@ -10,7 +10,8 @@
 **What I learned:** SELinux denials are logged in `/var/log/audit/audit.log`, not `journalctl`. Always restore contexts instead of disabling SELinux.  
 
 **Next:** SSH and firewalld hardening.
-----
+--
+
 ### Day 2 – 2026-04-20
 
 **Project:** homelab (Rocky Linux 9)  
@@ -22,6 +23,7 @@
 **What I learned:** SSH is bidirectional if the firewall allows it; Windows Firewall blocked incoming SSH until I enabled OpenSSH Server. Firewalld rich rules create zero‑trust access.  
 
 **Next:** Users, groups, and sudoers.
+--
 
 ### Day 3 – 2026-04-21
 
@@ -34,6 +36,7 @@
 **What I learned:** One `useradd` updates multiple files. The shadow file stores hashed passwords; only root can read it. 
 
 **Next:** System monitoring and logs.
+--
 
 ### Day 4 – 2026-04-22
 
@@ -46,6 +49,7 @@
 **What I learned:** An empty log isn’t broken; the service simply hadn’t received requests. Monitoring requires both real‑time tools and automated alerts. 
 
 **Next:** Log rotation and backups.
+--
 
 ### Day 5 – 2026-04-23
 
@@ -58,6 +62,7 @@
 **What I learned:** Backups must leave the server. `logrotate` prevents disk bloat. The backup script must be executable and use absolute paths.  
 
 **Next:** Cron vs systemd timers, bulk user creation.
+--
 
 ### Day 6 – 2026-04-24
 
@@ -70,6 +75,7 @@
 **What I learned:** Systemd timers are a modern cron alternative with better logging and handling of missed runs. Scripts for user provisioning are the first step toward Infrastructure as Code.  
 
 **Next:** Git & GitHub for homelab scripts.
+--
 
 ### Day 7 – 2026-04-26
 
@@ -82,6 +88,7 @@
 **What I learned:** Version control turns a local homelab into a public portfolio. Multiple remotes allow separate workflows (GitHub for visibility, GitLab for CI/CD).  
 
 **Next:** LVM – disk management.
+--
 
 ### Day 8 – 2026-04-28
 
@@ -94,6 +101,7 @@
 **What I learned:** Always check `lsblk` before running destructive commands. LVM allows online disk growth without reboot – critical for cloud VMs.  
 
 **Next:** cgroups – container resource limits.
+--
 
 ### Day 9 – 2026-04-29
 
@@ -106,6 +114,7 @@
 **What I learned:** Docker’s memory` flag relies on cgroups. Understanding cgroups helps debug OOM kills in Kubernetes.  
 
 **Next:** `strace` – tracing system calls.
+--
 
 ### Day 10 – 2026-04-30
 
@@ -118,6 +127,7 @@
 **What I learned:** `strace` only shows syscalls as they happen. Multi‑process services require tracing all workers or starting under strace. Cleanly detach with Ctrl+C.  
 
 **Next:** `lsof` and `fuser` for port/file detection.
+--
 
 ### Day 11 – 2026-05-01
 
@@ -130,6 +140,7 @@
 **What I learned:** `lsof` and `fuser` are the quickest ways to identify which process holds a port or file. The FUSE warnings are cosmetic.  
 
 **Next:** iptables/nftables and firewall internals.
+--
 
 ### Day 12 – 2026-05-02
 
@@ -142,6 +153,7 @@
 **What I learned:** Firewall rules must cover both IPv4 and IPv6. Firewalld writes native nftables rules, not legacy iptables. 
 
 **Next:** Remote access with Tailscale mesh VPN.
+--
 
 ### Day 13 – 2026-05-02 (continued)
 
@@ -154,6 +166,7 @@
 **What I learned:** Tailscale’s interface is automatically in the trusted zone on Rocky, but Ubuntu’s `ufw` requires explicit rules.  
 
 **Next:** Tailscale global homelab.
+--
 
 ### Day 14 – 2026-05-03
 
@@ -166,6 +179,7 @@
 **What I learned:** Tailscale’s IP changes on logout/login. `tailscale ping` tests direct WireGuard; relayed connections still work. A mesh VPN makes the homelab global without port forwarding.  
 
 **Next:** Network namespaces (container networking).
+--
 
 ### Day 15 – 2026-05-04
 
@@ -178,6 +192,7 @@
 **What I learned:** Docker / Kubernetes use exactly this mechanism (namespaces + veth pairs) to give containers their own network stacks.  
 
 **Next:** Playwright & test automation.
+--
 
 ### Day 16 – 2026-05-05
 
@@ -190,6 +205,7 @@
 **What I learned:** Cross‑platform Python requires different activation commands. Playwright can validate not just apps but infrastructure endpoints – synthetic monitoring.  
 
 **Next:** Ansible – Infrastructure as Code.
+--
 
 ### Day 17 – 2026-05-06
 
@@ -202,6 +218,7 @@
 **What I learned:** Ansible is idempotent; a playbook can repair a broken server. The control node must have all source files.
 
 **Next:** Variables and templates.
+--
 
 ### Day 18 – 2026-05-07
 
