@@ -262,3 +262,17 @@
 **What I learned:** The Terraform workflow is identical whether managing local files or cloud resources. Infrastructure as Code means declaring the desired state; the tool figures out how to achieve it.
 
 **Next:** Write a Terraform config for an AWS EC2 instance (free tier) and plan it without applying.
+
+----
+
+### Day 20 – 2026-05-09
+
+**Project:** terraform-aws-lab & PlayWrightCode
+
+**What I did:** Created a Terraform configuration for an AWS EC2 instance with a security group, AMI data source, and user_data script to install Nginx. Ran `terraform init` and `terraform validate` successfully. Learned that `terraform plan` requires valid AWS credentials because it queries live APIs. Prepared a Playwright test to verify the deployed instance once live.
+
+**Key commands:** `terraform init`, `terraform validate`, `terraform plan` (intentionally failed), creation of `main.tf`, `variables.tf`
+
+**What I learned:** Terraform separates syntax validation (`validate`) from infrastructure planning (`plan`). Real cloud provisioning needs authenticated API access. Declarative configuration maps exactly to what will exist in the cloud.
+
+**Next:** After exams – AWS account setup + `terraform apply` with real resources.
