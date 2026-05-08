@@ -248,3 +248,17 @@
 **What I learned:** Every manual edit must be a playbook task. Variables and templates make the playbook portable and reusable. Handlers apply configuration changes safely.  
 
 **Next:** Cross‑platform roles (Rocky + Ubuntu).
+
+----
+
+### Day 19 – 2026-05-08
+
+**Project:** terraform-local-lab & PlayWrightCode
+
+**What I did:** Installed Terraform on Ubuntu WSL. Created a local Terraform project with a `local_file` resource – no cloud provider needed. Ran the full workflow: `init`, `plan`, `apply`, verified the file was created, manually deleted it, re‑applied to prove self‑healing, then `destroy`. Set up a placeholder Playwright test for future infrastructure endpoints.
+
+**Key commands:** `terraform init`, `terraform plan`, `terraform apply -auto-approve`, `terraform destroy -auto-approve`, `cat hello.txt`
+
+**What I learned:** The Terraform workflow is identical whether managing local files or cloud resources. Infrastructure as Code means declaring the desired state; the tool figures out how to achieve it.
+
+**Next:** Write a Terraform config for an AWS EC2 instance (free tier) and plan it without applying.
