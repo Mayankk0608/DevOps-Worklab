@@ -62,10 +62,6 @@
         state: started 
         enabled: true 
 
-  handlers:
-    - name: run restorecon
-      command: restorecon -Rv /webroot/html
-
   handlers: 
     - name: reload nginx
       systemd: 
