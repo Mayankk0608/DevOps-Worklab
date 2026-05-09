@@ -289,4 +289,21 @@
 
 **What I learned:** Infrastructure as Code becomes truly reusable when parameters are externalised. Variable precedence (CLI > .tfvars > defaults) allows the same code to serve multiple environments without duplication.
 
-**Next:** After exams: AWS account setup, `terraform apply`, and Ansible integration.
+----
+
+### Day 22 – 2026-05-11
+
+**Project:** Ansible-lab & PlayWrightCode
+
+**What I did:** Created a GitLab CI pipeline (`.gitlab-ci.yml`) that runs an Ansible syntax check on every push, using the `cytopia/ansible` Docker image. Verified the pipeline passed in the GitLab UI. Prepared a similar pipeline for Playwright tests to be activated later.
+
+**Key commands:** `git push gitlab main`, `docker run` (optional for local test), editing `.gitlab-ci.yml`
+
+**What I learned:** CI/CD automates validation and testing on every code change. GitLab’s shared runners execute jobs in isolated containers, making pipelines reproducible. The `--syntax-check` flag gives a fast feedback loop.
+
+**Additional note:** Tested the Ansible CI pipeline locally using Docker. First attempt failed because I ran from the root DevOps_Projects and the container couldn’t find `site.yml` inside the subfolder. Fixed by either mounting only the `Ansible-lab` directory or adjusting the working directory to `/ansible/Ansible-lab`. Learned that local testing must mirror the repository structure exactly as the CI runner sees it.
+
+**Next:** After exams – extend pipeline with Terraform plan, Ansible apply, and Playwright smoke tests.
+
+----
+

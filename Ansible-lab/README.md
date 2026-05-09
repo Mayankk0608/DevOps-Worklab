@@ -176,6 +176,19 @@ A new test (test_selinux2.py) asserts that the page contains the expected hostna
 def test_selinux_template(page):
     page.goto("http://100.72.14.56")
     expect(page.locator("h1")).to_contain_text("This page is served from")
-    ```
+```
 
-    Result: 1 passed – the page now correctly shows This page is served from rockylab.
+Result: 1 passed – the page now correctly shows This page is served from rockylab.
+
+# Day 22: CI/CD Pipeline
+
+This project includes a **GitLab CI pipeline** (`.gitlab-ci.yml`) that runs automatically on every push.
+
+### What the pipeline does
+- **Stage: validate** – Runs `ansible-playbook -i inventory.ini site.yml --syntax-check` using the `cytopia/ansible:latest` Docker image.
+- If the playbook contains any YAML syntax error (like a duplicate key), the pipeline fails immediately.
+
+### Local testing
+The same check can be run locally with Docker:
+```bash
+docker run --rm -v $(pwd):/ansible -w /ansible cytopia/ansible:latest ansible-playbook -i inventory.ini site.yml --syntax-check

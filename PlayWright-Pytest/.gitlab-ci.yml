@@ -1,0 +1,13 @@
+stages:
+  - test
+
+playwright-tests:
+  stage: test
+  image: mcr.microsoft.com/playwright:latest
+  script:
+    - npm ci   # or pip install -r requirements.txt
+    - npx playwright test --reporter=html
+  artifacts:
+    when: always
+    paths:
+      - playwright-report/
