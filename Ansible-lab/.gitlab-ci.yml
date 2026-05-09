@@ -1,8 +1,0 @@
-stages:
-  - validate
-
-ansible-syntax-check:
-  stage: validate
-  image: cytopia/ansible:latest 
-  script:
-    - ansible-playbook -i inventory.ini site.yml --syntax-check

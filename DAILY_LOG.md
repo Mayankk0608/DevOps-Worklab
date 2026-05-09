@@ -307,3 +307,16 @@
 
 ----
 
+### Day 23 – 2026-05-12
+
+**Project:** terraform-aws-lab
+
+**What I did:** Created a GitLab CI pipeline that runs `terraform init` and `terraform validate` on every push, using the `hashicorp/terraform:latest` Docker image. Attempted local testing but Docker on WSL hit a credential helper error (`error storing credentials`). Fixed by clearing the `credsStore` field in `~/.docker/config.json` and re‑pulling the image. Pushed the project to GitLab and the pipeline passed immediately.
+
+**Key commands:** `docker pull hashicorp/terraform:latest`, `docker run --rm -v $(pwd):/workspace -w /workspace hashicorp/terraform:latest init`, editing `~/.docker/config.json`, `git push gitlab main`
+
+**What I learned:** Terraform validation in CI guarantees configuration correctness at all times. Local Docker issues don’t affect remote CI runners. The `credsStore` in Docker config can break on WSL if it points to a Windows credential manager that isn’t reachable.
+
+**Next:** After exams – add AWS credentials and extend the pipeline with `terraform plan` and eventually `apply`.
+
+----

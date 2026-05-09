@@ -1,0 +1,36 @@
+
+inventory.ini
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!example.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+.terraform.lock.hcl
+
+
+
+# Virtual environment
+venv/
+
+# VS Code settings
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+ 

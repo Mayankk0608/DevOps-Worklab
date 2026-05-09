@@ -209,3 +209,20 @@ Or via a `terraform.tfvars` file:
 instance_type = "t3.micro"
 ```
 This allows for flexible configurations without changing the main code, supporting different environments (dev, staging, prod) with ease.
+
+## Day 23: CI/CD Pipeline
+
+This project includes a **GitLab CI pipeline** (`.gitlab-ci.yml`) that runs automatically on every push.
+
+### What the pipeline does
+- Stage: `validate`
+  - `terraform init` – downloads the AWS provider and initialises the working directory
+  - `terraform validate` – checks that the configuration is syntactically valid and internally consistent
+
+The pipeline uses the official `hashicorp/terraform:latest` Docker image.
+
+### Local testing (optional)
+```bash
+docker run --rm -v $(pwd):/workspace -w /workspace hashicorp/terraform:latest init
+docker run --rm -v $(pwd):/workspace -w /workspace hashicorp/terraform:latest validate
+```
