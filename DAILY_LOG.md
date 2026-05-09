@@ -276,3 +276,17 @@
 **What I learned:** Terraform separates syntax validation (`validate`) from infrastructure planning (`plan`). Real cloud provisioning needs authenticated API access. Declarative configuration maps exactly to what will exist in the cloud.
 
 **Next:** After exams – AWS account setup + `terraform apply` with real resources.
+
+----
+
+### Day 21 – 2026-05-10
+
+**Project:** terraform-aws-lab & PlayWrightCode
+
+**What I did:** Extracted hard‑coded values from the Terraform EC2 config into a `variables.tf` file. Added default values and tested overrides via the CLI. Created a `terraform.tfvars` to show alternative default inputs. Updated the Playwright test to accept the instance name as an environment variable, making validation portable.
+
+**Key commands:** `terraform validate`, `terraform plan -var="instance_type=t3.micro"`, `nano variables.tf`, `nano terraform.tfvars`
+
+**What I learned:** Infrastructure as Code becomes truly reusable when parameters are externalised. Variable precedence (CLI > .tfvars > defaults) allows the same code to serve multiple environments without duplication.
+
+**Next:** After exams: AWS account setup, `terraform apply`, and Ansible integration.

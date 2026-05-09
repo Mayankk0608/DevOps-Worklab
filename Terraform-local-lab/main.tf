@@ -9,11 +9,9 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
-  # Credentials will be supplied via ~/.aws/credentials or environment variables
+  region = var.aws_region
 }
 
-# Fetch the latest Amazon Linux 2023 AMI
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]
@@ -24,7 +22,6 @@ data "aws_ami" "amazon_linux" {
   }
 }
 
-# A security group that allows SSH and HTTP from anywhere
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow SSH and HTTP inbound"
@@ -57,13 +54,11 @@ resource "aws_security_group" "web_sg" {
   }
 }
 
-# The EC2 instance that will run our Nginx server
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.amazon_linux.id
-  instance_type          = "t2.micro"           # Free tier eligible
+  instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.web_sg.id]
 
-  # Bootstrapping: installs Nginx and creates the exact page we used earlier
   user_data = <<-EOF
     #!/bin/bash
     dnf update -y
@@ -74,7 +69,7 @@ resource "aws_instance" "web" {
   EOF
 
   tags = {
-    Name = "Terraform-Web"
+    Name = var.instance_name
   }
 }
 

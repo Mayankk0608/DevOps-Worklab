@@ -188,3 +188,24 @@ This test will be run after the EC2 instance is provisioned, using the public IP
 2. Run terraform apply and see the EC2 instance in the AWS console.
 3. Use Ansible to customize the instance further (e.g., deploy the SELinux demo page).
 4. Run Playwright tests from a GitLab CI pipeline against the live public IP.
+
+# Day 21:  Variables
+
+This project uses variables to make the configuration reusable across environments. They are defined in `variables.tf`.
+
+| Variable         | Description                | Default         |
+| `aws_region`     | AWS region                 | `us-east-1`     |
+| `instance_type`  | EC2 instance type          | `t2.micro`      |
+| `instance_name`  | Name tag for the instance  | `Terraform-Web` |
+
+Override them via CLI:
+```bash
+terraform plan -var="instance_type=t3.micro"
+terraform apply -var="instance_type=t3.micro" -auto-approve
+```
+
+Or via a `terraform.tfvars` file:
+```hcl
+instance_type = "t3.micro"
+```
+This allows for flexible configurations without changing the main code, supporting different environments (dev, staging, prod) with ease.
